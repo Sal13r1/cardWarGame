@@ -3,4 +3,4 @@
 #	Makefile for the card game 'WAR'
 
 all:
-	clang++ main.cc cardDeck.cc -std=c++20
+	clang++ main.cc -std=c++20

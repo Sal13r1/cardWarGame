@@ -1,7 +1,6 @@
 /**
  * Silne Veras
  * This is my helper file for some home grown functions
- * For now srand(time(NULL)) must be called by the program calling this helper file.
  */
 #pragma once
 
@@ -10,12 +9,15 @@
 int roll(int nSides);
 int roll(int nDice, int nSides);
 int roll(int nDice, int nSides, int mod);
-int rollDice(char* diceStream);
+int rollDice(char* diceStream); // Need to implement
 
 template<typename T, size_t N>
 void shuffleArray(T (&array)[N]);
 
-
+/**
+ * This seeds ands returns a reference to a mersenne twister engine. Depending on if random devices are truly random
+ * if not, this will seed based on time. 
+ */
 std::mt19937& rng() {
     static std::random_device rd;
     static std::mt19937 gen;
@@ -34,9 +36,8 @@ std::mt19937& rng() {
 
 /**
  * This is the Fisher-Yates algorithm, Wikipedia says this is the modern algorithm for randomizing arrays.
- *
- * This is a randomization algorithm that swaps the current index with the last index not yet swapped.
- * range-- after each iteration.
+ * 
+ * This is a randomization algorithm that swaps the current index with the last index not yet swapped. Range-- each loop. God bless Templates
  */
 template<typename T, size_t N>
 void shuffleArray(T (&array)[N]) {

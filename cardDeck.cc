@@ -1,18 +1,43 @@
 #include <stdlib.h>
 #include <iostream>
-#include "war_nums.hh"
-//so how do we make a card deck? We could iterate over an int with two arrays that lead to face cards and 'numbers'
-#include "war_nums.hh"
+#include "meaMath.hh"
 
+enum SUIT {
+	HEARTS = 0,
+	DIAMONDS,
+	CLUB,
+	SPADES
+};
 
-class Card{
-	const SUIT suit;
-	const RANK rank;
+enum RANK {
+	TWO = 2,
+	THREE,
+	FOUR,
+	FIVE,
+	SIX,
+	SEVEN,
+	EIGHT,
+	NINE,
+	TEN,
+	JACK,
+	QUEEN,
+	KING,
+	ACE,
+	JOKER
+};
+
+class Card {
+	SUIT suit;
+	RANK rank;
 
 private:
 
 public:
-	Card(int suitInput, int rankInput) : suit((SUIT)suitInput), rank((RANK)rankInput) {}
+	Card(int nSuit, int nRank)
+	{
+		suit = static_cast<SUIT>(nSuit);
+		rank = static_cast<RANK>(nRank);
+	}
 
 	~Card()
 	{
@@ -24,36 +49,25 @@ public:
 	}
 };
 
-class Deck{
-	Card* deck[];
+class Deck {
+	Card* deck[52];
 
-
-//Moment of inspiration. Try using recursion with the SUITS as i and then use the RANKS to iterate over/through them. Once you hit the final card, return! We can use a linked list for this.
 public:
 	Deck()
 	{
-		new
-		for (int i = 0; i < 52; ++i)
+		int n = 0;
+		for (int i = 0; i < 4; ++i)
 		{
-			for (int j = 0; j < 4; ++j)
+			for (int j = 2; j < 16; ++j)
 			{
-				for (int k = 2; k < 16; ++k)
-				{
-					deck[i] = Card(j, k);
-					deck[i].printCard();
-
-				}
+				deck[n] = new Card(i,j);
+				deck[n]->printCard();
+				n++;
 			}
 		}
 	}
 
 	~Deck()
 	{
-	}
-
-	//My attempt at implementing the Durstenfield algorithm for shuffling. Found via searching
-	void shuffleDeck()
-	{
-
 	}
 };

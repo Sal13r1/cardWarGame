@@ -48,7 +48,7 @@ public:
 		std::string suitNames[] = {"HEARTS", "DIAMONDS", "CLUB", "SPADES"};
 		std::string rankNames[] = {"", "", "TWO", "THREE", "FOUR", "FIVE", "SIX", "SEVEN", "EIGHT", "NINE", "TEN", "JACK", 
 									"QUEEN", "KING", "ACE", "JOKER"};
-		
+
 		std::cout << rankNames[rank] << " of " << suitNames[suit] << std::endl;
 	}
 };
@@ -85,6 +85,7 @@ public:
 	{
 		for (int i = 0; i < 52; ++i)
 		{
+			printf("%d) ", i+1);
 			deck[i]->printCard();
 		}
 	}

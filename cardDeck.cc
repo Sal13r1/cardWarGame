@@ -45,7 +45,11 @@ public:
 
 	void printCard()
 	{
-		std::cout << rank << " of " << suit << std::endl;	
+		std::string suitNames[] = {"HEARTS", "DIAMONDS", "CLUB", "SPADES"};
+		std::string rankNames[] = {"", "", "TWO", "THREE", "FOUR", "FIVE", "SIX", "SEVEN", "EIGHT", "NINE", "TEN", "JACK", 
+									"QUEEN", "KING", "ACE", "JOKER"};
+		
+		std::cout << rankNames[rank] << " of " << suitNames[suit] << std::endl;
 	}
 };
 
@@ -61,7 +65,6 @@ public:
 			for (int j = 2; j < 16; ++j)
 			{
 				deck[n] = new Card(i,j);
-				deck[n]->printCard();
 				n++;
 			}
 		}
@@ -69,5 +72,25 @@ public:
 
 	~Deck()
 	{
+		for (int i = 0; i < 53; ++i)
+		{
+			delete deck[i];
+		}
+	}
+
+	/** printDeck() is mostly used for debugging, it prints the full deck.
+	 *	Big O: O(i) [it will always be 52.......until support for more decks instituted]
+	 */
+	void printDeck()
+	{
+		for (int i = 0; i < 52; ++i)
+		{
+			deck[i]->printCard();
+		}
+	}
+
+	void shuffleDeck()
+	{
+		shuffleArray(deck);
 	}
 };

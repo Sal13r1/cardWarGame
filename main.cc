@@ -6,12 +6,17 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include "meaMath.hh"
-#include "cardDeck.cc"
+#include "cardDeck.hh"
+#include "player.hh"
 
 int main()
 {
+
+	std::cout << std::endl << "!!!WAR IS ON THE HORIZON!!!" << std::endl;
 	Deck* deck = new Deck();
+	std::cout << "!!! SOLDIERS DRAFTED !!!" << std::endl;
 	deck->shuffleDeck();
-	deck->printDeck();
+	std::cout << "!!! Armies are Gathering !!!" << std::endl;
+
 	return 0;
 }

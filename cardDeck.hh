@@ -27,6 +27,7 @@ enum RANK {
 };
 
 class Card {
+
 	SUIT suit;
 	RANK rank;
 
@@ -48,7 +49,7 @@ public:
 		std::string suitNames[] = {"HEARTS", "DIAMONDS", "CLUB", "SPADES"};
 		std::string rankNames[] = {"", "", "TWO", "THREE", "FOUR", "FIVE", "SIX", "SEVEN", "EIGHT", "NINE", "TEN", "JACK", 
 									"QUEEN", "KING", "ACE", "JOKER"};
-
+		
 		std::cout << rankNames[rank] << " of " << suitNames[suit] << std::endl;
 	}
 };
@@ -79,19 +80,24 @@ public:
 	}
 
 	/** printDeck() is mostly used for debugging, it prints the full deck.
-	 *	Big O: O(i) [it will always be 52.......until support for more decks instituted]
+	 *	Big O: O(i)
 	 */
 	void printDeck()
 	{
 		for (int i = 0; i < 52; ++i)
 		{
-			printf("%d) ", i+1);
 			deck[i]->printCard();
 		}
 	}
 
+	void printShuffleMSG()
+	{
+		std::cout << std::endl << "!!!!!!!!!!!!!!!!!!!" << std::endl << "!!!!!Shuffling!!!!!" << std::endl << "!!!!!!!!!!!!!!!!!!!" << std::endl << std::endl;
+	}
+
 	void shuffleDeck()
 	{
+		printShuffleMSG();
 		shuffleArray(deck);
 	}
 };

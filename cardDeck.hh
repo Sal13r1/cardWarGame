@@ -1,7 +1,7 @@
 #include <stdlib.h>
 #include <iostream>
 #include "meaMath.hh"
-
+#pragma once
 enum SUIT {
 	HEARTS = 0,
 	DIAMONDS,
@@ -71,6 +71,11 @@ public:
 		}
 	}
 
+	Deck(int NumOfCards)
+	{
+		Card* deck[NumOfCards];
+	}
+
 	~Deck()
 	{
 		for (int i = 0; i < 53; ++i)
@@ -88,6 +93,11 @@ public:
 		{
 			deck[i]->printCard();
 		}
+	}
+
+	void splitDeck(Deck* deckA, Deck* deckB)
+	{
+
 	}
 
 	void printShuffleMSG()

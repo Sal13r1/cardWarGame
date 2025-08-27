@@ -1,7 +1,7 @@
 /* 
 *	Silne Veras
 *	Mar 2025
-*	This is my implementation of 'war'
+*	This is my implementation of the card game 'war'
 */
 
 //TODO BEFORE SUBMITTING TO KRYSTAL: YOU MUST SIMPLIFY THE #INCLUDES. Make them correct this is ugly.
@@ -10,14 +10,39 @@
 #include "meaMath.hh" // My custom math helper!
 #include "cardDeck.hh" // This creates decks and cards
 #include "player.hh" // make player methods
-#include "warGame.hh" // USe this to control the actual game, including number of players
+#include "warGame.hh" // Use this to control the actual game, including number of players
 
+
+// We'll need to make a player class that owns a deck array of our length. We should use vectors
+//4 players is the max per deck. 4 Players get 52/4
 int main()
 {
+	int numOfPlayers;
+	std::cout << "How many Players? (This version supports 1-4)" << std::endl;
+	std::cin >> numOfPlayers;
+
+	switch(numOfPlayers) {
+		case 1:
+			//call war with num of players.
+			break;
+		case 2:
+
+			break;
+		case 3:
+
+			break;
+		case 4:
+
+			break;
+		default:
+			std::cout << "The valid range is 1-4 players." << std::endl;
+	}
+
 	std::cout << std::endl << "!!!WAR IS ON THE HORIZON!!!" << std::endl;
-	Deck* deck = new Deck();
+	Deck* deck = new Deck(numOfPlayers);
 	std::cout << "!!! SOLDIERS DRAFTED !!!" << std::endl;
 	deck->shuffleDeck();
+	deck->printDeck();
 	std::cout << "!!! Armies are Gathering !!!" << std::endl;
 
 	return 0;

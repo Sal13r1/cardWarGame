@@ -1,6 +1,8 @@
 #include <stdlib.h>
 #include <iostream>
 #include "meaMath.hh"
+#include "vector.hh"
+
 #pragma once
 enum SUIT {
 	HEARTS = 0,
@@ -22,7 +24,7 @@ enum RANK {
 	JACK,
 	QUEEN,
 	KING,
-	ACE,
+	ACE = 14, // or 1
 	JOKER
 };
 
@@ -55,44 +57,37 @@ public:
 };
 
 class Deck {
-	Card* deck[52];
+	Vector<Card> deck;
 
 public:
 	Deck()
 	{
-		int n = 0;
-		for (int i = 0; i < 4; ++i)
+		for (int suit = 0; suit < 4; ++suit)
 		{
-			for (int j = 2; j < 16; ++j)
+			for (int rank = 2; rank <= 14; ++rank)
 			{
-				deck[n] = new Card(i,j);
-				n++;
+				Card card(suit, rank);
+				deck.pushBack(card);
 			}
 		}
 	}
 
-	Deck(int NumOfCards)
+	Deck(int numOfCards)
 	{
-		Card* deck[NumOfCards];
+		//TODO: Accept   
+		//P&P:Is this needed? 
 	}
 
 	~Deck()
 	{
-		for (int i = 0; i < 53; ++i)
-		{
-			delete deck[i];
-		}
 	}
 
 	/** printDeck() is mostly used for debugging, it prints the full deck.
-	 *	Big O: O(i)
+	 *	Big O: O()
 	 */
 	void printDeck()
 	{
-		for (int i = 0; i < 52; ++i)
-		{
-			deck[i]->printCard();
-		}
+		
 	}
 
 	void splitDeck(Deck* deckA, Deck* deckB)
@@ -100,14 +95,14 @@ public:
 
 	}
 
-	void printShuffleMSG()
+	void printShuffleMessage()
 	{
 		std::cout << std::endl << "!!!!!!!!!!!!!!!!!!!" << std::endl << "!!!!!Shuffling!!!!!" << std::endl << "!!!!!!!!!!!!!!!!!!!" << std::endl << std::endl;
 	}
 
 	void shuffleDeck()
 	{
-		printShuffleMSG();
-		shuffleArray(deck);
+		printShuffleMessage();
+		shuffleVector(deck);
 	}
 };

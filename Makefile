@@ -3,4 +3,4 @@
 #	Makefile for the card game 'WAR'
 
 all:
-	clang++ main.cc -std=c++20
+	clang++ vectorTest.cc catch2/catch_amalgamated.cpp -std=c++20

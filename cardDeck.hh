@@ -72,7 +72,7 @@ public:
 		}
 	}
 
-	Deck(int numOfCards)
+	Deck(int numOfDecks)
 	{
 		//TODO: Accept   
 		//P&P:Is this needed? 

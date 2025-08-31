@@ -111,7 +111,7 @@ template<typename T>
 void shuffleVector(Vector<T>& v)
 {
 	int size = v.Size();
-	for (int i = (size - 1); i < (size - 1); --i)
+	for (int i = (size - 1); i > 0; --i)
 	{
 		std::uniform_int_distribution<int> dist(0, i);
 		int j = dist(rng());            

@@ -199,4 +199,8 @@ TEST_CASE("shuffleVector()")
 	REQUIRE(v.back() == 9);
 
 	shuffleVector(v);
+	v.print();
+	std::cout << "MeaMath Above | Vector Shuffle() Below" << std::endl;
+	v.shuffle();
+	v.print();
 }

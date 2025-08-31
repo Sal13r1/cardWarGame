@@ -17,6 +17,8 @@
 //4 players is the max per deck. 4 Players get 52/4
 int main()
 {
+
+	//NEXT STEPS SOLVE TYPE COMPARISON ISSUE AND THEN SEE IF WE CAN MAKE A DECK
 	int numOfPlayers;
 	std::cout << "How many Players? (This version supports 1-4)" << std::endl;
 	std::cin >> numOfPlayers;

@@ -5,6 +5,9 @@
  */
 
 #pragma once
+#include <random>
+#include <iostream>
+#include <type_traits>
 
 template<typename T>
 class Vector
@@ -409,5 +412,77 @@ public:
 	const T* end() const
 	{ 
 		return &array[size];
+	}
+
+
+	/**
+	 * This seeds ands returns a reference to a mersenne twister engine. Depending on if random devices are truly random
+	 * if not, this will seed based on time. This is only used to seed the RNG for shuffling Vectors.
+	 */
+	std::mt19937& rng() {
+		static std::random_device rd;
+		static std::mt19937 gen;
+		static bool seeded = false;
+
+		if (!seeded) {
+			if (rd.entropy() > 0) {
+				gen.seed(rd());
+			} else {
+				gen.seed(time(NULL));
+			}
+			seeded = true;
+		}
+		return gen;
+	}
+
+	/**
+	 * This shuffles the vector
+	 * return none
+	 * Big O(n)
+	 */
+	void shuffleVector(Vector<T>& v)
+	{
+		int size = v.Size();
+		for (int i = (size - 1); i > 0; --i)
+		{
+			std::uniform_int_distribution<int> dist(0, i);
+			int j = dist(rng());            
+			T temp = v[i];
+			v[i] = v[j];
+			v[j] = temp;
+		}
+	}
+
+	/**
+	 * This calls my shuffleVector method.
+	 * return Void
+	 * Big O(1) or Big(n)
+	 */
+	void shuffle()
+	{
+		shuffleVector(*this);
+	}
+
+	/**
+	 * print() will output all elements in the vector to console
+	 * 
+	 * @return void
+	 * 
+	 * Big Oh: O(n)
+	 */
+	void print() const
+	{
+	    std::cout << "[";
+
+	    for (int i = 0; i < size; ++i)
+	    {
+	        std::cout << array[i];
+	        if (i < size - 1)  // Don't add comma after last element
+	        {
+	            std::cout << ", ";
+	        }
+	    }
+	    
+	    std::cout << "]" << std::endl;
 	}
 };

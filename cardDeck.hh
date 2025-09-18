@@ -36,6 +36,11 @@ class Card {
 private:
 
 public:
+	Card()
+	{
+		suit = static_cast<SUIT>(0);
+		rank = static_cast<RANK>(0);
+	}
 	Card(int nSuit, int nRank)
 	{
 		suit = static_cast<SUIT>(nSuit);
@@ -62,6 +67,14 @@ class Deck {
 public:
 	Deck()
 	{
+	}
+
+	~Deck()
+	{
+	}
+
+	void fillDeck()
+	{
 		for (int suit = 0; suit < 4; ++suit)
 		{
 			for (int rank = 2; rank <= 14; ++rank)
@@ -70,24 +83,6 @@ public:
 				deck.pushBack(card);
 			}
 		}
-	}
-
-	Deck(int numOfDecks)
-	{
-		//TODO: Accept   
-		//P&P:Is this needed? 
-	}
-
-	~Deck()
-	{
-	}
-
-	/** printDeck() is mostly used for debugging, it prints the full deck.
-	 *	Big O: O()
-	 */
-	void printDeck()
-	{
-		
 	}
 
 	void splitDeck(Deck* deckA, Deck* deckB)
@@ -104,5 +99,32 @@ public:
 	{
 		printShuffleMessage();
 		shuffleVector(deck);
+	}
+
+	Card dealCard()
+	{
+		return deck.popFront();
+	}
+
+	void takeCard(Card card)
+	{
+		deck.pushBack(card);
+	}
+
+	size_t deckSize()
+	{
+		return deck.Size();
+	}
+
+	/** printDeck() is mostly used for debugging, it prints the full deck.
+	 *	Big O: O()
+	 */
+	void printDeck()
+	{
+		for (int i = 0; i < deckSize(); ++i)
+			{
+				std::cout << "Card [" << i+1 << "]: ";
+				deck[i].printCard();
+			}		
 	}
 };

@@ -19,32 +19,51 @@ int main()
 {
 
 	//NEXT STEPS SOLVE TYPE COMPARISON ISSUE AND THEN SEE IF WE CAN MAKE A DECK
-	int numOfPlayers;
-	std::cout << "How many Players? (This version supports 1-4)" << std::endl;
-	std::cin >> numOfPlayers;
+	int numOfPlayers = 2; // 2 is default
+	std::cout << "How many Players? (This version supports 2-4)" << std::endl;
+	//std::cin >> numOfPlayers;
 
 	switch(numOfPlayers) {
 		case 1:
 			//call war with num of players.
 			break;
 		case 2:
-
 			break;
 		case 3:
-
 			break;
 		case 4:
-
 			break;
 		default:
 			std::cout << "The valid range is 1-4 players." << std::endl;
 	}
 
 	std::cout << std::endl << "!!!WAR IS ON THE HORIZON!!!" << std::endl;
-	Deck* deck = new Deck(numOfPlayers);
+	Deck* deck = new Deck();
+	deck->fillDeck();
 	std::cout << "!!! SOLDIERS DRAFTED !!!" << std::endl;
 	deck->shuffleDeck();
 	deck->printDeck();
+
+	Player player1;
+	Player player2;
+
+	std::cout << "!!! GENERALS CHOSEN !!!" << std::endl;
+
+	player1.takeCard(*deck);
+	player2.takeCard(*deck);
+
+	std::cout << "!!! FIRST SOLDERS GATHERED !!!" << std::endl;
+
+	Deck* fieldOfWar;
+
+	std::cout << "Player 1's deck: " << std::endl;
+
+	player1.printCards();
+
+
+	std::cout << "Player 2's deck: " << std::endl;
+	player2.printCards();
+
 	std::cout << "!!! Armies are Gathering !!!" << std::endl;
 
 	return 0;

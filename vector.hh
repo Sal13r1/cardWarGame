@@ -72,19 +72,15 @@ public:
 	 */
 	~Vector()
 	{
-		for (int i = 0; i < capacity; ++i)
-		{
-			array[i] = 0;
-		}
-
 		size = 0;
 		capacity = 0;
 
 		delete [] array;
+		array = nullptr;
 	}
 
 	/**
-	 * Vector(T*, int) is an alternatie ctor that will use an array and the size of the array to create a new vector
+	 * Vector(T*, int) is an alternative ctor that will use an array and the size of the array to create a new vector
 	 * 
 	 * @param userArray: This is an array of Type T that will be used to create the vector
 	 * 
